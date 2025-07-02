@@ -5,7 +5,7 @@ let firstCard,
 	secondCard;
 let lockBoard = false;
 let score = 0,
-	lives = 4;
+	lives = 6;
 
 document.querySelector(".score").textContent = score;
 document.querySelector(".lives").textContent = lives;
@@ -81,7 +81,12 @@ function updateLives(){
 	lives--;
 	document.querySelector(".lives").textContent = lives;
 	if(lives == 0){
-		restart();
+		document.getElementById("gameArea")
+		.insertAdjacentHTML("afterend",
+		`<div class="gameOverPanel"> 
+			<h1>Game Over</h1>
+		</div>`);
+		//restart();
 	}
 
 }
@@ -116,4 +121,5 @@ function restart() {
 	document.querySelector(".lives").textContent = lives;
 	gameBoard.innerHTML = "";
 	createCards();
+	document.getElementsByClassName("gameOverPanel")[0].remove();
 }

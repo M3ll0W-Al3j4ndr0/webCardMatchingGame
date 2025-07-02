@@ -71,3 +71,15 @@ p{
 .card .front {
 	transform: rotateY(180deg);
 }
+
+.gameOverPanel {
+	position: absolute;
+	color: black;
+	left: 0px;
+	top: 0px;
+	Background-color: white;
+	height: 40%;
+	width: 60%;
+	border: 3px solid black;
+	z-index: 2;
+}
