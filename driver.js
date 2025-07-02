@@ -4,9 +4,11 @@ const cards = ['😅', '👍', '🐵', '🙀', '💪', '💅', '👖', '🦊', '
 let firstCard, 
 	secondCard;
 let lockBoard = false;
-let score = 0;
+let score = 0,
+	lives = 4;
 
 document.querySelector(".score").textContent = score;
+document.querySelector(".lives").textContent = lives;
 
 //using the Fisher-Yates shuffle algorithm to shuffle the cards
 function shuffleCards() {
@@ -68,8 +70,19 @@ function checkForMatch() {
 		disableCards();
 		return;
 	}
+	else{
+		updateLives();
+	}
 
 	unflipCards();
+}
+
+function updateLives(){
+	lives--;
+	document.querySelector(".lives").textContent = lives;
+	if(lives == 0){
+		restart();
+	}
 
 }
 
@@ -98,7 +111,9 @@ function restart() {
 	resetBoard();
 	shuffleCards();
 	score = 0;
+	lives = 6;
 	document.querySelector(".score").textContent = score;
+	document.querySelector(".lives").textContent = lives;
 	gameBoard.innerHTML = "";
 	createCards();
 }
