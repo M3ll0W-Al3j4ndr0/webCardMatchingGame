@@ -84,7 +84,7 @@ function updateLives(){
 		document.getElementById("gameArea")
 		.insertAdjacentHTML("afterend",
 		`<div class="gameOverPanel"> 
-			<h1>Game Over</h1>
+			<h1 id="gameOverText">Game Over</h1>
 		</div>`);
 		//restart();
 	}

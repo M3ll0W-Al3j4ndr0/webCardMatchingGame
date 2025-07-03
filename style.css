@@ -74,12 +74,21 @@ p{
 
 .gameOverPanel {
 	position: absolute;
-	color: black;
-	left: 0px;
 	top: 0px;
+	color: black;
 	Background-color: white;
 	height: 40%;
 	width: 60%;
 	border: 3px solid black;
 	z-index: 2;
+	margin-top: 20%;
+	margin-left: 20%;
+}
+
+#gameOverText{
+	position: absolute;
+	margin: 0;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
 }
