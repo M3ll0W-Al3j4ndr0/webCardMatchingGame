@@ -75,6 +75,7 @@ p{
 .gameOverPanel {
 	position: absolute;
 	top: 0px;
+	left: 0px;
 	color: black;
 	Background-color: white;
 	height: 40%;
@@ -83,6 +84,7 @@ p{
 	z-index: 2;
 	margin-top: 20%;
 	margin-left: 20%;
+	display: none;
 }
 
 #gameOverText{

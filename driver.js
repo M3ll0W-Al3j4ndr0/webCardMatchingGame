@@ -81,14 +81,18 @@ function updateLives(){
 	lives--;
 	document.querySelector(".lives").textContent = lives;
 	if(lives == 0){
-		document.getElementById("gameArea")
-		.insertAdjacentHTML("afterend",
-		`<div class="gameOverPanel"> 
-			<h1 id="gameOverText">Game Over</h1>
-		</div>`);
-		//restart();
+		document.getElementsByClassName("gameOverPanel")[0]
+		.style.display = "initial";
+		disableAllCards();
 	}
 
+}
+
+function disableAllCards(){
+	const cardElements = document.getElementsByClassName("card");
+	for  (let card of cardElements){
+		card.removeEventListener("click", flipCard);
+	}
 }
 
 function disableCards() {
@@ -121,5 +125,6 @@ function restart() {
 	document.querySelector(".lives").textContent = lives;
 	gameBoard.innerHTML = "";
 	createCards();
-	document.getElementsByClassName("gameOverPanel")[0].remove();
+	document.getElementsByClassName("gameOverPanel")[0]
+	.style.display = "none";
 }
