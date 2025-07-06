@@ -8,7 +8,15 @@ let score = 0,
 	lives = 6;
 
 document.querySelector(".score").textContent = score;
-document.querySelector(".lives").textContent = lives;
+//document.querySelector(".lives").textContent = lives;
+
+function drawLiveCounter(){
+	let hearts = "";
+	for(let i = 0; i < lives; i++){
+		hearts += '❤️';
+	}
+	document.querySelector(".lives").textContent = hearts;
+}
 
 function createDeck(){
 	cards = cardFaces.concat(cardFaces);
@@ -83,7 +91,7 @@ function checkForMatch() {
 
 function updateLives(){
 	lives--;
-	document.querySelector(".lives").textContent = lives;
+	drawLiveCounter();
 	if(lives == 0){
 		document.getElementsByClassName("gameOverPanel")[0]
 		.style.display = "initial";
@@ -127,7 +135,8 @@ function restart() {
 	score = 0;
 	lives = 6;
 	document.querySelector(".score").textContent = score;
-	document.querySelector(".lives").textContent = lives;
+	//document.querySelector(".lives").textContent = lives;
+	drawLiveCounter();
 	gameBoard.innerHTML = "";
 	createCards();
 	document.getElementsByClassName("gameOverPanel")[0]
