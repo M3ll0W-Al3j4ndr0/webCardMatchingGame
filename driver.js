@@ -43,7 +43,7 @@ function createCards() {
 		cardElement.setAttribute("data-name", card);
 		cardElement.innerHTML = `
 			<div class="front"> 
-				<p>${card}</p>
+				<p class="cardPicture">${card}</p>
 			</div>
 			<div class="back"></div>`;
 		cardElement.addEventListener("click", flipCard);

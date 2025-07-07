@@ -6,10 +6,29 @@ body {
 	text-align: center;
 }
 
-p{
+.scoreBoard{
 	font-size: 40px;
+	display: flex;
+	justify-content: flex-start;
+	width: 60%;
+	margin: 2% 20%;
 }
 
+.livesLabel{
+	margin-left: 10%;
+}
+
+.lives{
+	text-align: left;
+}
+
+.score{
+	text-align: left;
+}
+
+.cardPicture{
+	font-size: 80px;
+}
 
 .selections {
 	display: flex;
