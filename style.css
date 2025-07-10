@@ -6,6 +6,9 @@ body {
 	text-align: center;
 }
 
+.mainHeader{
+	margin: 1%;
+}
 .scoreBoard{
 	font-size: 40px;
 	display: flex;
