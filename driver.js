@@ -7,8 +7,13 @@ let lockBoard = false;
 let score = 0,
 	lives = 6;
 
+const Mode = Object.freeze({
+	EASY: 0,
+	NORMAL: 1,
+	HARD: 2
+});
+
 document.querySelector(".score").textContent = score;
-//document.querySelector(".lives").textContent = lives;
 
 function drawLiveCounter(){
 	let hearts = "";
@@ -19,9 +24,21 @@ function drawLiveCounter(){
 }
 
 function createDeck(){
-	cards = cardFaces.concat(cardFaces);
+	let mode = Mode.NORMAL;
+	if(mode == Mode.EASY){
+		cards = cardFaces.slice(0, 6);
+		cards = cards.concat(cards);
+	}
+	else if(mode == Mode.NORMAL){
+		cards = cardFaces.slice(0, 8);
+		cards = cards.concat(cards);
+	}
+	else{
+		cards = cardFaces.concat(cardFaces);
+	}
 	
 }
+
 //using the Fisher-Yates shuffle algorithm to shuffle the cards
 function shuffleCards() {
 	  let currentIndex = cards.length,
