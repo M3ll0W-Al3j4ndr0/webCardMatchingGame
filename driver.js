@@ -1,6 +1,6 @@
 const gameBoard = document.querySelector(".gameBoard");
-const cards = ['😅', '👍', '🐵', '🙀', '💪', '💅', '👖', '🦊', '🐰',
-		'😅', '👍', '🐵', '🙀', '💪', '💅', '👖', '🦊', '🐰'];
+const cardFaces = ['😅', '👍', '🐵', '🙀', '💪', '💅', '👖', '🦊', '🐰'];
+let cards = [];
 let firstCard, 
 	secondCard;
 let lockBoard = false;
@@ -10,6 +10,10 @@ let score = 0,
 document.querySelector(".score").textContent = score;
 document.querySelector(".lives").textContent = lives;
 
+function createDeck(){
+	cards = cardFaces.concat(cardFaces);
+	
+}
 //using the Fisher-Yates shuffle algorithm to shuffle the cards
 function shuffleCards() {
 	  let currentIndex = cards.length,
@@ -118,6 +122,7 @@ function resetBoard() {
 
 function restart() {
 	resetBoard();
+	createDeck();
 	shuffleCards();
 	score = 0;
 	lives = 6;
