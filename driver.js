@@ -13,6 +13,7 @@ const Mode = Object.freeze({
 	HARD: 2
 });
 
+let currentMode = Mode.NORMAL;
 document.querySelector(".score").textContent = score;
 
 function drawLiveCounter(){
@@ -24,12 +25,11 @@ function drawLiveCounter(){
 }
 
 function createDeck(){
-	let mode = Mode.NORMAL;
-	if(mode == Mode.EASY){
+	if(currentMode == Mode.EASY){
 		cards = cardFaces.slice(0, 6);
 		cards = cards.concat(cards);
 	}
-	else if(mode == Mode.NORMAL){
+	else if(currentMode == Mode.NORMAL){
 		cards = cardFaces.slice(0, 8);
 		cards = cards.concat(cards);
 	}
@@ -37,6 +37,18 @@ function createDeck(){
 		cards = cardFaces.concat(cardFaces);
 	}
 	
+}
+
+function setBoardSize(){
+	let board = document.querySelector(".gameBoard");
+
+	if(currentMode == Mode.HARD){
+		board.style.gridTemplateColumns = "repeat(6, auto)";
+	}
+	else{
+		board.style
+		.gridTemplateColumns = "repeat(4, auto)";
+	}
 }
 
 //using the Fisher-Yates shuffle algorithm to shuffle the cards
@@ -148,11 +160,11 @@ function resetBoard() {
 function restart() {
 	resetBoard();
 	createDeck();
+	setBoardSize();
 	shuffleCards();
 	score = 0;
 	lives = 6;
 	document.querySelector(".score").textContent = score;
-	//document.querySelector(".lives").textContent = lives;
 	drawLiveCounter();
 	gameBoard.innerHTML = "";
 	createCards();
