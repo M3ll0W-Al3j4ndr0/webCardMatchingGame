@@ -9,12 +9,23 @@ body {
 .mainHeader{
 	margin: 1%;
 }
+
+.mainMenu{
+}
+
+.gameMenuElements{
+	display: none;
+}
 .scoreBoard{
 	font-size: 40px;
 	display: flex;
+	position: fixed;
+	top: 0;
+	left: 0;
 	justify-content: flex-start;
 	width: 60%;
 	margin: 2% 20%;
+	color: black;
 }
 
 .livesLabel{
@@ -44,10 +55,12 @@ body {
 	border-radius: 10px;
 	background-color: blue;
 	color: white;
+	margin: 2%;
 }
 
 .gameBoard {
 	display: grid;
+	margin-top: 6%;
 	justify-content: center;
 	grid-gap: 16px;
 	grid-template-columns: auto auto auto auto auto auto;

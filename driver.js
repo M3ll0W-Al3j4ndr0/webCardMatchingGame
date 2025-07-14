@@ -16,6 +16,10 @@ const Mode = Object.freeze({
 let currentMode = Mode.NORMAL;
 document.querySelector(".score").textContent = score;
 
+function changeMode(newMode){
+	currentMode = newMode;
+	restart();
+}
 function drawLiveCounter(){
 	let hearts = "";
 	for(let i = 0; i < lives; i++){
@@ -170,4 +174,13 @@ function restart() {
 	createCards();
 	document.getElementsByClassName("gameOverPanel")[0]
 	.style.display = "none";
+	document.querySelector(".mainMenu").style.display = "none";
+	document.querySelector(".gameMenuElements").style.display = "initial";
+}
+
+function toMainMenu(){
+	document.querySelector(".mainMenu").style.display = "initial";
+	document.querySelector(".gameMenuElements").style.display = "none";
+	document.querySelector(".gameOverPanel").style.display = "none";
+	gameBoard.innerHTML = "";
 }
