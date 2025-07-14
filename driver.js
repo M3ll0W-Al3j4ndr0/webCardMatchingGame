@@ -106,6 +106,12 @@ function flipCard() {
 	checkForMatch();
 }
 
+function flipAllCards(){
+	let cardElements = document.getElementsByClassName("card");
+	for(let card of cardElements){
+		card.classList.add("flipped");
+	}
+}
 function checkForMatch() {
 	let isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
@@ -155,6 +161,15 @@ function unflipCards() {
 	}, 500);
 }
 
+function unflipAllCards(){
+	const cardElements = document.getElementsByClassName("card");
+	for(let card of cardElements){
+		setTimeout(() => {
+			card.classList.remove("flipped");
+		}, 500);
+	}
+}
+
 function resetBoard() {
 	firstCard = null;
 	secondCard = null;
@@ -176,6 +191,8 @@ function restart() {
 	.style.display = "none";
 	document.querySelector(".mainMenu").style.display = "none";
 	document.querySelector(".gameMenuElements").style.display = "initial";
+	flipAllCards();
+	unflipAllCards();
 }
 
 function toMainMenu(){
