@@ -13,6 +13,9 @@ const Mode = Object.freeze({
 	HARD: 2
 });
 
+const WIN = true,
+	LOSE = false;
+
 let currentMode = Mode.NORMAL;
 document.querySelector(".score").textContent = score;
 
@@ -119,6 +122,7 @@ function checkForMatch() {
 		score++;
 		document.querySelector(".score").textContent = score;
 		disableCards();
+		checkForWin();
 		return;
 	}
 	else{
@@ -128,15 +132,45 @@ function checkForMatch() {
 	unflipCards();
 }
 
+function checkForWin(){
+	let isWinner = false;
+	if(currentMode == Mode.EASY && score == 6){
+		isWinner = true;
+	}
+	else if (currentMode == Mode.NORMAL && score == 8){
+		isWinner = true;
+	}
+	else if(currentMode == Mode.HARD && score == 9){
+		isWinner = true;
+	}
+
+	if(isWinner){
+		showGameOverPanel(WIN);
+	}
+}
+
 function updateLives(){
 	lives--;
 	drawLiveCounter();
 	if(lives == 0){
-		document.getElementsByClassName("gameOverPanel")[0]
-		.style.display = "initial";
-		disableAllCards();
+		showGameOverPanel(LOSE);
 	}
 
+}
+
+function showGameOverPanel(isWinner){
+	document.getElementsByClassName("gameOverPanel")[0]
+	.style.display = "initial";
+	disableAllCards();
+
+	const panelText = document.getElementById("gameOverText");
+	
+	if(isWinner){
+		panelText.innerHTML = "Congratulations! A winner is you!";
+	}
+	else{
+		panelText.innerHTML = "Game Over";
+	}
 }
 
 function disableAllCards(){

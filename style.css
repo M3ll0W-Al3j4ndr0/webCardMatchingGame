@@ -1,7 +1,7 @@
 body {
 	min-height: 100vh;
 	min-width: 100vh;
-	background-color: darkgray;
+	background-color: #616968;
 	color: white;
 	text-align: center;
 }
@@ -25,7 +25,7 @@ body {
 	justify-content: flex-start;
 	width: 60%;
 	margin: 2% 20%;
-	color: black;
+	color: white;
 }
 
 .livesLabel{
@@ -97,7 +97,7 @@ body {
 }
 
 .card .back {
-	background-color: red;
+	background-color: black;
 	background-position: center center;
 	background-size: cover;
 	backface-visibility: hidden;
