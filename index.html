@@ -13,6 +13,14 @@
 		<button type="button" onclick="changeMode(1)">Normal</button>
 		<button type="button" onclick="changeMode(2)">Hard</button>
 	</div>
+		<div class="scoreBoard">
+			<div class="scoreLabel">
+				Score: <span class="score"></span> 
+			</div>
+			<div class="livesLabel">
+				Lives: <span class="lives"></span>
+			</div>
+		</div>
 	<div class="gameBoard" id="gameArea">
 	</div>
 	<div class="gameOverPanel"> 
@@ -20,14 +28,6 @@
 	</div>
 
 	<div class="gameMenuElements">
-		<div class="scoreBoard">
-			<span class="scoreLabel">
-				Score: <span class="score"></span> 
-			</span>
-			<span class="livesLabel">
-				Lives: <span class="lives"></span>
-			</span>
-		</div>
 
 		<div class="selections">
 			<button type="button" onclick="toMainMenu()">Menu</button>
