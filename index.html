@@ -9,9 +9,15 @@
 <body>
 	<div class="mainMenu">
 		<h1 class="mainHeader">Match the cards</h1>
-		<button type="button" onclick="changeMode(0)">Easy</button>
-		<button type="button" onclick="changeMode(1)">Normal</button>
-		<button type="button" onclick="changeMode(2)">Hard</button>
+		<button id="easyButton" type="button" onclick="changeMode(0)">
+			Easy
+		</button>
+		<button id="normalButton" type="button" onclick="changeMode(1)">
+			Normal
+		</button>
+		<button id="hardButton" type="button" onclick="changeMode(2)">
+			Hard
+		</button>
 	</div>
 		<div class="scoreBoard">
 			<div class="scoreLabel">
@@ -30,8 +36,12 @@
 	<div class="gameMenuElements">
 
 		<div class="selections">
-			<button type="button" onclick="toMainMenu()">Menu</button>
-			<button type="button" onclick="restart()">Restart</button>
+			<button id="menuButton" type="button" onclick="toMainMenu()">
+				Menu
+			</button>
+			<button id="restartButton" type="button" onclick="restart()">
+				Restart
+			</button>
 		</div>
 	</div>
 

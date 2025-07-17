@@ -200,7 +200,7 @@ function unflipAllCards(){
 	for(let card of cardElements){
 		setTimeout(() => {
 			card.classList.remove("flipped");
-		}, 500);
+		}, 750);
 	}
 }
 
@@ -225,6 +225,7 @@ function restart() {
 	.style.display = "none";
 	document.querySelector(".mainMenu").style.display = "none";
 	document.querySelector(".gameMenuElements").style.display = "initial";
+	document.querySelector(".scoreBoard").style.display = "flex";
 	flipAllCards();
 	unflipAllCards();
 }
@@ -233,5 +234,6 @@ function toMainMenu(){
 	document.querySelector(".mainMenu").style.display = "initial";
 	document.querySelector(".gameMenuElements").style.display = "none";
 	document.querySelector(".gameOverPanel").style.display = "none";
+	document.querySelector(".scoreBoard").style.display = "none";
 	gameBoard.innerHTML = "";
 }

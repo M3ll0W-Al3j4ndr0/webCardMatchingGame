@@ -9,6 +9,7 @@ body {
 }
 
 .mainMenu{
+	
 }
 
 .gameMenuElements{
@@ -16,25 +17,34 @@ body {
 }
 .scoreBoard{
 	font-size: min(3.5vw, 40px);
-	display: flex;
+	display: none;
 	position: sticky;
 	z-index: 1;
 	top: 0;
-	justify-content: start;
+	justify-content: center;
 	margin-left: auto;
 	margin-right: auto;
 	width: min(60%, 570px);
 	color: white;
+	background-color: rgba(97, 105, 104, 0.5);
+	border-radius: 10px;
+	padding: 0.2%;
+	box-sizing: border-box;
 }
 
 .livesLabel{
 	margin-left: 10%;
+	margin-right: auto;
+	box-sizing: border-box;
 }
 
 .lives{
 	text-align: left;
 }
 
+.scoreLabel{
+	text-align: left;
+}
 .score{
 	text-align: left;
 }
@@ -52,11 +62,80 @@ body {
 	padding: 8px 16px;
 	font-size: min(3vw, 30px);
 	border-radius: 10px;
-	background-color: blue;
-	color: white;
+	background-color: transparent;
 	margin: 2%;
+	border-width: 4px;
+	border-style: solid;
+	font-weight: bold;
 }
 
+#menuButton{
+	border-color: lightgray;
+	color: lightgray;
+}
+#menuButton:hover{
+	background-color: lightgray;
+	color: black;
+	mix-blend-mode: screen;
+}
+
+#restartButton{
+	border-color: black;
+	color: black;
+}
+
+#restartButton:hover{
+	background-color: black;
+	color: white;
+	mix-blend-mode: multiply;
+}
+
+.mainMenu button{
+	padding: 8px 16px;
+	font-size: min(4vw, 40px);
+	border-radius: 10px;
+	background-color: transparent;
+	margin: 5%;
+	border-width: 5px;
+	border-style: solid;
+	font-weight: bold;
+}
+
+#easyButton{
+	border-color: green;
+	color: green;
+}
+
+#easyButton:hover{
+	background-color: green;
+	color: black;
+	mix-blend-mode: screen;
+}
+
+#normalButton{
+	border-color: lightblue;
+	color: lightblue;
+}
+
+#normalButton:hover{
+	background-color: lightblue;
+	color: black;
+	mix-blend-mode: screen;
+}
+
+:root{
+	--hardButtonColor: #f00;
+}
+#hardButton{
+	border-color: var(--hardButtonColor);
+	color: var(--hardButtonColor);
+}
+
+#hardButton:hover{
+	background-color: var(--hardButtonColor);
+	color: black;
+	mix-blend-mode: screen;
+}
 .gameBoard {
 	display: grid;
 	margin-top: 1%;
@@ -98,6 +177,7 @@ body {
 
 .card .back {
 	background-color: black;
+	background-image: radial-gradient(circle, black, darkred);
 	background-position: center center;
 	background-size: cover;
 	backface-visibility: hidden;
@@ -109,15 +189,14 @@ body {
 
 .gameOverPanel {
 	position: absolute;
-	top: 0px;
-	left: 0px;
+	top: 30%;
+	left: 50%;
 	color: black;
 	Background-color: white;
-	width: 60%;
+	width: min(60%, 630px);
 	border: 3px solid black;
 	z-index: 2;
-	margin-top: 20%;
-	margin-left: 20%;
+	transform: translate(-50%, -30%);
 	display: none;
 	aspect-ratio: 3 / 2;
 }
