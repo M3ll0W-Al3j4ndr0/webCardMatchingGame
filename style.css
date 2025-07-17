@@ -183,6 +183,10 @@ body {
 	backface-visibility: hidden;
 }
 
+.card .back:hover{
+	box-shadow: 0 0 5px aliceblue;
+}
+
 .card .front {
 	transform: rotateY(180deg);
 }
