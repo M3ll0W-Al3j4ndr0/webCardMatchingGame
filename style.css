@@ -1,3 +1,7 @@
+:root{
+	--hardButtonColor: #f00;
+}
+
 body {
 	background-color: #616968;
 	color: white;
@@ -6,85 +10,6 @@ body {
 
 .mainHeader{
 	margin: 1%;
-}
-
-.gameMenuElements{
-	display: none;
-}
-
-.scoreBoard{
-	font-size: min(3.5vw, 40px);
-	display: none;
-	position: sticky;
-	z-index: 1;
-	top: 0;
-	justify-content: center;
-	margin-left: auto;
-	margin-right: auto;
-	width: min(60%, 570px);
-	color: white;
-	background-color: rgba(97, 105, 104, 0.5);
-	border-radius: 10px;
-	padding: 0.2%;
-	box-sizing: border-box;
-}
-
-.livesLabel{
-	margin-left: 10%;
-	margin-right: auto;
-	box-sizing: border-box;
-}
-
-.lives{
-	text-align: left;
-}
-
-.scoreLabel{
-	text-align: left;
-}
-.score{
-	text-align: left;
-}
-
-.cardPicture{
-	font-size: min(9vw, 90px);
-}
-
-.selections {
-	display: flex;
-	justify-content: center;
-}
-
-.selections button {
-	padding: 8px 16px;
-	font-size: min(3vw, 30px);
-	border-radius: 10px;
-	background-color: transparent;
-	margin: 2%;
-	border-width: 4px;
-	border-style: solid;
-	font-weight: bold;
-}
-
-#menuButton{
-	border-color: lightgray;
-	color: lightgray;
-}
-#menuButton:hover{
-	background-color: lightgray;
-	color: black;
-	mix-blend-mode: screen;
-}
-
-#restartButton{
-	border-color: black;
-	color: black;
-}
-
-#restartButton:hover{
-	background-color: black;
-	color: white;
-	mix-blend-mode: multiply;
 }
 
 .mainMenu button{
@@ -120,9 +45,6 @@ body {
 	mix-blend-mode: screen;
 }
 
-:root{
-	--hardButtonColor: #f00;
-}
 #hardButton{
 	border-color: var(--hardButtonColor);
 	color: var(--hardButtonColor);
@@ -133,6 +55,41 @@ body {
 	color: black;
 	mix-blend-mode: screen;
 }
+
+.scoreBoard{
+	font-size: min(3.5vw, 40px);
+	display: none;
+	position: sticky;
+	z-index: 1;
+	top: 0;
+	justify-content: center;
+	margin-left: auto;
+	margin-right: auto;
+	width: min(60%, 570px);
+	color: white;
+	background-color: rgba(97, 105, 104, 0.5);
+	border-radius: 10px;
+	padding: 0.2%;
+	box-sizing: border-box;
+}
+
+
+.scoreLabel{
+	text-align: left;
+}
+.score{
+}
+
+.livesLabel{
+	margin-left: 10%;
+	margin-right: auto;
+	box-sizing: border-box;
+}
+
+.lives{
+	text-align: left;
+}
+
 .gameBoard {
 	display: grid;
 	margin-top: 1%;
@@ -171,7 +128,6 @@ body {
 	justify-content: center;
 	align-items: center;
 }
-
 .card .back {
 	background-color: black;
 	background-image: radial-gradient(circle, black, darkred);
@@ -186,6 +142,9 @@ body {
 
 .card .front {
 	transform: rotateY(180deg);
+}
+.cardPicture{
+	font-size: min(9vw, 90px);
 }
 
 .gameOverPanel {
@@ -209,3 +168,45 @@ body {
 	left: 50%;
 	transform: translate(-50%, -50%);
 }
+
+.gameMenuElements{
+	display: none;
+	justify-content: center;
+}
+
+.gameMenuElements button {
+	padding: 8px 16px;
+	font-size: min(3vw, 30px);
+	border-radius: 10px;
+	background-color: transparent;
+	margin: 2%;
+	border-width: 4px;
+	border-style: solid;
+	font-weight: bold;
+}
+
+#menuButton{
+	border-color: lightgray;
+	color: lightgray;
+}
+#menuButton:hover{
+	background-color: lightgray;
+	color: black;
+	mix-blend-mode: screen;
+}
+
+#restartButton{
+	border-color: black;
+	color: black;
+}
+
+#restartButton:hover{
+	background-color: black;
+	color: white;
+	mix-blend-mode: multiply;
+}
+
+
+
+
+

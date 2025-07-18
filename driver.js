@@ -124,7 +124,6 @@ function unflipAllCards(){
 	}
 }
 
-
 function flipCard() {
 	if (lockBoard) {
 		return;
@@ -193,13 +192,9 @@ function showGameOverPanel(isWinner){
 	disableAllCards();
 
 	const panelText = document.getElementById("gameOverText");
-	
-	if(isWinner){
-		panelText.innerHTML = "Congratulations! A winner is you!";
-	}
-	else{
-		panelText.innerHTML = "Game Over";
-	}
+
+	panelText.innerHTML = isWinner? "Congratulations! A winner is you!"
+		: "Game Over";
 }
 
 function disableAllCards(){
@@ -214,7 +209,6 @@ function updateLives(){
 	if(lives == 0){
 		showGameOverPanel(LOSE);
 	}
-
 }
 
 function unflipCards() {
