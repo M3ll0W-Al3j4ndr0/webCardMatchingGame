@@ -8,13 +8,10 @@ body {
 	margin: 1%;
 }
 
-.mainMenu{
-	
-}
-
 .gameMenuElements{
 	display: none;
 }
+
 .scoreBoard{
 	font-size: min(3.5vw, 40px);
 	display: none;

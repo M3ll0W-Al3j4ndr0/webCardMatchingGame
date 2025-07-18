@@ -1,34 +1,55 @@
-const gameBoard = document.querySelector(".gameBoard");
 const cardFaces = ['😅', '👍', '🐵', '🙀', '💪', '💅', '👖', '🦊', '🐰'];
+const scoreHTML = document.querySelector(".score"),
+	gameOverPanel = document.querySelector(".gameOverPanel"),
+	mainMenu = document.querySelector(".mainMenu"),
+	gameMenuElements = document.querySelector(".gameMenuElements"),
+	scoreBoard = document.querySelector(".scoreBoard"),
+	gameBoard = document.querySelector(".gameBoard");
+const WIN = true,
+	LOSE = false;
+const Mode = Object.freeze({
+	EASY: 0,
+	NORMAL: 1,
+	HARD: 2
+});
 let cards = [];
 let firstCard, 
 	secondCard;
 let lockBoard = false;
 let score = 0,
 	lives = 6;
-
-const Mode = Object.freeze({
-	EASY: 0,
-	NORMAL: 1,
-	HARD: 2
-});
-
-const WIN = true,
-	LOSE = false;
-
 let currentMode = Mode.NORMAL;
-document.querySelector(".score").textContent = score;
+let cardElements;
 
 function changeMode(newMode){
 	currentMode = newMode;
 	restart();
 }
-function drawLiveCounter(){
-	let hearts = "";
-	for(let i = 0; i < lives; i++){
-		hearts += '❤️';
-	}
-	document.querySelector(".lives").textContent = hearts;
+
+function restart() {
+	score = 0;
+	lives = 6;
+	scoreHTML.textContent = score;
+	gameBoard.innerHTML = "";
+	gameOverPanel.style.display = "none";
+	mainMenu.style.display = "none";
+	gameMenuElements.style.display = "initial";
+	scoreBoard.style.display = "flex";
+
+	resetBoard();
+	createDeck();
+	setBoardSize();
+	shuffleCards();
+	drawLiveCounter();
+	createCards();
+	flipAllCards();
+	unflipAllCards();
+}
+
+function resetBoard() {
+	firstCard = null;
+	secondCard = null;
+	lockBoard = false;
 }
 
 function createDeck(){
@@ -43,19 +64,12 @@ function createDeck(){
 	else{
 		cards = cardFaces.concat(cardFaces);
 	}
-	
 }
 
 function setBoardSize(){
-	let board = document.querySelector(".gameBoard");
-
-	if(currentMode == Mode.HARD){
-		board.style.gridTemplateColumns = "repeat(6, auto)";
-	}
-	else{
-		board.style
-		.gridTemplateColumns = "repeat(4, auto)";
-	}
+	gameBoard.style.gridTemplateColumns = currentMode == Mode.HARD? 
+		"repeat(6, auto)":
+		"repeat(4, auto)";
 }
 
 //using the Fisher-Yates shuffle algorithm to shuffle the cards
@@ -72,6 +86,14 @@ function shuffleCards() {
 	  }
 }
 
+function drawLiveCounter(){
+	let hearts = "";
+	for(let i = 0; i < lives; i++){
+		hearts += '❤️';
+	}
+	document.querySelector(".lives").textContent = hearts;
+}
+
 function createCards() {
 	for (let card of cards) {
 		const cardElement = document.createElement("div");
@@ -85,7 +107,23 @@ function createCards() {
 		cardElement.addEventListener("click", flipCard);
 		gameBoard.appendChild(cardElement);
 	  }
+	cardElements = document.getElementsByClassName("card");
 }
+
+function flipAllCards(){
+	for(let card of cardElements){
+		card.classList.add("flipped");
+	}
+}
+
+function unflipAllCards(){
+	for(let card of cardElements){
+		setTimeout(() => {
+			card.classList.remove("flipped");
+		}, 750);
+	}
+}
+
 
 function flipCard() {
 	if (lockBoard) {
@@ -109,18 +147,12 @@ function flipCard() {
 	checkForMatch();
 }
 
-function flipAllCards(){
-	let cardElements = document.getElementsByClassName("card");
-	for(let card of cardElements){
-		card.classList.add("flipped");
-	}
-}
 function checkForMatch() {
 	let isMatch = firstCard.dataset.name === secondCard.dataset.name;
 
 	if(isMatch){
 		score++;
-		document.querySelector(".score").textContent = score;
+		scoreHTML.textContent = score;
 		disableCards();
 		checkForWin();
 		return;
@@ -130,6 +162,13 @@ function checkForMatch() {
 	}
 
 	unflipCards();
+}
+
+function disableCards() {
+	firstCard.removeEventListener("click", flipCard);
+	secondCard.removeEventListener("click", flipCard);
+
+	resetBoard();
 }
 
 function checkForWin(){
@@ -149,18 +188,8 @@ function checkForWin(){
 	}
 }
 
-function updateLives(){
-	lives--;
-	drawLiveCounter();
-	if(lives == 0){
-		showGameOverPanel(LOSE);
-	}
-
-}
-
 function showGameOverPanel(isWinner){
-	document.getElementsByClassName("gameOverPanel")[0]
-	.style.display = "initial";
+	gameOverPanel.style.display = "initial";
 	disableAllCards();
 
 	const panelText = document.getElementById("gameOverText");
@@ -174,17 +203,18 @@ function showGameOverPanel(isWinner){
 }
 
 function disableAllCards(){
-	const cardElements = document.getElementsByClassName("card");
 	for  (let card of cardElements){
 		card.removeEventListener("click", flipCard);
 	}
 }
 
-function disableCards() {
-	firstCard.removeEventListener("click", flipCard);
-	secondCard.removeEventListener("click", flipCard);
+function updateLives(){
+	lives--;
+	drawLiveCounter();
+	if(lives == 0){
+		showGameOverPanel(LOSE);
+	}
 
-	resetBoard();
 }
 
 function unflipCards() {
@@ -195,45 +225,10 @@ function unflipCards() {
 	}, 500);
 }
 
-function unflipAllCards(){
-	const cardElements = document.getElementsByClassName("card");
-	for(let card of cardElements){
-		setTimeout(() => {
-			card.classList.remove("flipped");
-		}, 750);
-	}
-}
-
-function resetBoard() {
-	firstCard = null;
-	secondCard = null;
-	lockBoard = false;
-}
-
-function restart() {
-	resetBoard();
-	createDeck();
-	setBoardSize();
-	shuffleCards();
-	score = 0;
-	lives = 6;
-	document.querySelector(".score").textContent = score;
-	drawLiveCounter();
-	gameBoard.innerHTML = "";
-	createCards();
-	document.getElementsByClassName("gameOverPanel")[0]
-	.style.display = "none";
-	document.querySelector(".mainMenu").style.display = "none";
-	document.querySelector(".gameMenuElements").style.display = "initial";
-	document.querySelector(".scoreBoard").style.display = "flex";
-	flipAllCards();
-	unflipAllCards();
-}
-
 function toMainMenu(){
-	document.querySelector(".mainMenu").style.display = "initial";
-	document.querySelector(".gameMenuElements").style.display = "none";
-	document.querySelector(".gameOverPanel").style.display = "none";
-	document.querySelector(".scoreBoard").style.display = "none";
+	mainMenu.style.display = "initial";
+	gameMenuElements.style.display = "none";
+	gameOverPanel.style.display = "none";
+	scoreBoard.style.display = "none";
 	gameBoard.innerHTML = "";
 }
